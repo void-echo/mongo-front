@@ -18,9 +18,15 @@
 
                     <el-menu-item-group>
 
-                      <el-menu-item index="1-1" class="menu-item">年龄小于20岁的所有学生</el-menu-item>
-                      <el-menu-item index="1-2" class="menu-item">年龄小于20岁的软件学生</el-menu-item>
-                      <el-menu-item index="1-3" class="menu-item">找出学生表中所有的学生</el-menu-item>
+                      <el-menu-item index="1-1" class="menu-item" @click="goto('/lab-2-1--all-student-le-20-age')">
+                        年龄小于20岁的所有学生
+                      </el-menu-item>
+                      <el-menu-item index="1-2" class="menu-item" @click="goto('/lab-2-2--all-student-le-20-age-and-software')">
+                        年龄小于20岁的软件学生
+                      </el-menu-item>
+                      <el-menu-item index="1-3" class="menu-item">
+                        找出学生表中所有的学生
+                      </el-menu-item>
                     </el-menu-item-group>
                   </el-submenu>
 
@@ -105,7 +111,23 @@ export default {
   mounted() {
     // go to /place-holder
     if (this.$route.path !== '/place-holder') {
-      this.$router.push('place-holder')
+      this.$router.push('/place-holder').catch();
+    }
+  },
+
+  data() {
+    return {
+      private_: {
+        // private data
+      }
+    }
+  },
+
+  methods: {
+    goto(path) {
+      if (this.$route.path !== path) {
+        this.$router.push(path).catch();
+      }
     }
   }
 }
