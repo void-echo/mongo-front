@@ -11,4 +11,5 @@ new Vue({
     render: h => h(App)
 }).$mount('#app');
 
+// noinspection JSUnusedGlobalSymbols
 Vue.prototype.$spring_boot_api = 'http://localhost:18080';

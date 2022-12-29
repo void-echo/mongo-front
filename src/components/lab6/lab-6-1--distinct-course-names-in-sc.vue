@@ -1,19 +1,35 @@
 <template>
   <div>
-    <h2>Lab 6-1: Distinct Course Names in SC</h2>
-    <h2>{{ this.spring_boot_url_base }}</h2>
+    <el-table
+        :data="distinct_course_names_in_sc"
+        stripe
+        style="width: 100%; box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1); border-radius: 30px">
+      <el-table-column
+          label="课程名"
+          prop="course_name"
+      >
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 
 <script>
 import placeHolder from "@/components/place-holder.vue";
+
 export default {
   name: "lab-6-1--distinct-course-names-in-sc",
   data() {
     return {
       spring_boot_url_base: this.$spring_boot_api,
-
+      placeHolder: placeHolder,
+      // lab6_1_distinct_course_names_in_sc: []
+      distinct_course_names_in_sc: []
     }
+  },
+  mounted() {
+    this.axiosGet_Config("/sql/find-distinct-all-course-names-in-student-course", "GET", {}, {}, (res) => {
+      this.distinct_course_names_in_sc = res.data
+    })
   },
 
   methods: {

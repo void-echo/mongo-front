@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import App from "@/App.vue";
 
 
 Vue.use(VueRouter)
@@ -8,8 +7,8 @@ Vue.use(VueRouter)
 const routes = [
     {
         path: '/',
-        name: 'home',
-        component: App
+        name: 'place-holder',
+        component: () => import('../components/place-holder.vue')
     },
     {
         path: '/place-holder',
@@ -151,7 +150,6 @@ const routes = [
         name: 'lab-6-9--popular-c-top-10',
         component: () => import('../components/lab6/lab-6-9--popular-c-top-10.vue')
     },
-
 
 
 ]
