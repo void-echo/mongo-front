@@ -23,16 +23,6 @@ export default {
     return {
       spring_boot_url_base: this.$spring_boot_api,
       student_data: [],
-      /*
-      "sid": "200900133240",
-      "name": "白龙",
-      "sex": "女",
-      "age": 24,
-      "birthday": "1988年02月05日",
-      "dname": "公共卫生学院",
-      "classId": "2011",
-      "selectedCourseNum": 145
-      */
       query: "/sql/busy-student-top-10"
     }
   },
@@ -41,7 +31,6 @@ export default {
     this.axiosGet_Config("/sql/busy-student-top-10", "GET", {}, {}, (res) => {
       this.student_data = res.data
       // print the data
-      console.log(this.student_data)
     })
   },
 

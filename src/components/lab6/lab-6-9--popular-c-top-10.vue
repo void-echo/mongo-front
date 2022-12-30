@@ -4,6 +4,10 @@
         :data="my_data"
         stripe
         style="width: 100%; box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1); border-radius: 30px">
+      <el-table-column fixed label="课程名" prop="cname" sortable></el-table-column>
+      <el-table-column fixed label="课程号" prop="cid" sortable></el-table-column>
+      <el-table-column fixed label="选课人数" prop="count" sortable></el-table-column>
+
     </el-table>
 
   </div>
@@ -15,12 +19,15 @@ export default {
   data() {
     return {
       my_data: [],
+      // "cname": "编译原理",
+      // "count": 500,
+      // "cid": "300004"
       spring_boot_url_base: this.$spring_boot_api,
     };
   },
 
   mounted() {
-    this.axiosGet_Config("/teacher/findMaleTeachersOlderThan", "GET", {}, {}, (res) => {
+    this.axiosGet_Config("/sql/find-top-10-enroll-courses", "GET", {}, {}, (res) => {
       this.my_data = res.data
     })
   },

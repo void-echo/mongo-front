@@ -4,6 +4,12 @@
         :data="my_data"
         stripe
         style="width: 100%; box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1); border-radius: 30px">
+      <el-table-column fixed label="姓名" prop="name" sortable></el-table-column>
+      <el-table-column fixed label="优秀" prop="A" sortable></el-table-column>
+      <el-table-column fixed label="良好" prop="B" sortable></el-table-column>
+      <el-table-column fixed label="合格" prop="C" sortable></el-table-column>
+      <el-table-column fixed label="不及格" prop="D" sortable></el-table-column>
+
     </el-table>
 
   </div>
@@ -11,16 +17,22 @@
 
 <script>
 export default {
+  // /sql/find-score-distribution
   name: "lab-6-5--gpa-rank-level-overview-of-each-s",
   data() {
     return {
       my_data: [],
+      // "A": 1,
+      // "B": 1,
+      // "C": 2,
+      // "D": 1,
+      // "name": "安杰清"
       spring_boot_url_base: this.$spring_boot_api,
     };
   },
 
   mounted() {
-    this.axiosGet_Config("/teacher/findMaleTeachersOlderThan", "GET", {}, {}, (res) => {
+    this.axiosGet_Config("/sql/find-score-distribution", "GET", {}, {}, (res) => {
       this.my_data = res.data
     })
   },

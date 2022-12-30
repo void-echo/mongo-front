@@ -4,6 +4,11 @@
         :data="my_data"
         stripe
         style="width: 100%; box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1); border-radius: 30px">
+      <el-table-column fixed label="学号" prop="sid" sortable></el-table-column>
+      <el-table-column fixed label="姓名" prop="student_name" sortable></el-table-column>
+      <el-table-column fixed label="课程" prop="course_name" sortable></el-table-column>
+      <el-table-column fixed label="得分" prop="score" sortable></el-table-column>
+
     </el-table>
   </div>
 </template>
@@ -14,12 +19,16 @@ export default {
   data() {
     return {
       my_data: [],
+      // "student_name": "李恒春",
+      // "score": 99.0,
+      // "course_name": "矿产资源经济概论",
+      // "sid": "200900132659"
       spring_boot_url_base: this.$spring_boot_api,
     };
   },
 
   mounted() {
-    this.axiosGet_Config("/teacher/findMaleTeachersOlderThan", "GET", {}, {}, (res) => {
+    this.axiosGet_Config("/sql/find-each-best-course-score-and-name", "GET", {}, {}, (res) => {
       this.my_data = res.data
     })
   },

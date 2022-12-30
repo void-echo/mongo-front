@@ -4,6 +4,11 @@
         :data="my_data"
         stripe
         style="width: 100%; box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1); border-radius: 30px">
+      <el-table-column fixed label="课程名" prop="cname" sortable></el-table-column>
+      <el-table-column fixed label="课程号" prop="cid" sortable></el-table-column>
+      <el-table-column fixed label="学生姓名" prop="student_name" sortable></el-table-column>
+      <el-table-column fixed label="分数" prop="max_score" sortable></el-table-column>
+
     </el-table>
 
   </div>
@@ -11,16 +16,21 @@
 
 <script>
 export default {
+  // /sql/find-each-course-best-student-score-and-name
   name: "lab-6-7--best-student-of-each-c",
   data() {
     return {
       my_data: [],
+      // "student_name": "郝晓燕",
+      // "max_score": 109.0,
+      // "cname": "电子资源的检索与利用",
+      // "cid": "300109"
       spring_boot_url_base: this.$spring_boot_api,
     };
   },
 
   mounted() {
-    this.axiosGet_Config("/teacher/findMaleTeachersOlderThan", "GET", {}, {}, (res) => {
+    this.axiosGet_Config("/sql/find-each-course-best-student-score-and-name", "GET", {}, {}, (res) => {
       this.my_data = res.data
     })
   },

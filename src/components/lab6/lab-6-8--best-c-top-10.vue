@@ -4,6 +4,10 @@
         :data="my_data"
         stripe
         style="width: 100%; box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1); border-radius: 30px">
+      <el-table-column fixed label="课程名" prop="cname" sortable></el-table-column>
+      <el-table-column fixed label="课程号" prop="cid" sortable></el-table-column>
+      <el-table-column fixed label="平均分" prop="avgScore" sortable></el-table-column>
+
     </el-table>
 
   </div>
@@ -11,17 +15,25 @@
 
 <script>
 export default {
+  // /sql/find-top-10-avg-score-courses
   name: "lab-6-8--best-c-top-10",
   data() {
     return {
       my_data: [],
+      // "avgScore": 120.59541984732824,
+      // "cname": "心理学概论",
+      // "cid": "300042"
       spring_boot_url_base: this.$spring_boot_api,
     };
   },
 
   mounted() {
-    this.axiosGet_Config("/teacher/findMaleTeachersOlderThan", "GET", {}, {}, (res) => {
+    this.axiosGet_Config("/sql/find-top-10-avg-score-courses", "GET", {}, {}, (res) => {
       this.my_data = res.data
+      // avgScore 2位小数
+      this.my_data.forEach((item) => {
+        item.avgScore = item.avgScore.toFixed(2)
+      })
     })
   },
 

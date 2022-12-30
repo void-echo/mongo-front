@@ -4,6 +4,11 @@
         :data="my_data"
         stripe
         style="width: 100%; box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1); border-radius: 30px">
+      <el-table-column fixed label="课程名" prop="course_name" sortable></el-table-column>
+      <el-table-column fixed label="课程号" prop="cid" sortable></el-table-column>
+      <el-table-column fixed label="选课人数" prop="count" sortable></el-table-column>
+      <el-table-column fixed label="平均分" prop="avgScore" sortable></el-table-column>
+
     </el-table>
 
   </div>
@@ -11,17 +16,26 @@
 
 <script>
 export default {
+  // /sql/each-course-enroll-student-num-and-avg-score
   name: "lab-6-6--avg-gpa-and-sel-s-num-of-c",
   data() {
     return {
       my_data: [],
+      // "avgScore": 71.92366412213741,
+      // "course_name": "西方歌剧简史与名作赏析",
+      // "count": 131,
+      // "cid": "300138"
       spring_boot_url_base: this.$spring_boot_api,
     };
   },
 
   mounted() {
-    this.axiosGet_Config("/teacher/findMaleTeachersOlderThan", "GET", {}, {}, (res) => {
+    this.axiosGet_Config("/sql/each-course-enroll-student-num-and-avg-score", "GET", {}, {}, (res) => {
       this.my_data = res.data
+      // avgScore keep 2 decimal places
+      this.my_data.forEach((item) => {
+        item.avgScore = item.avgScore.toFixed(2)
+      })
     })
   },
 

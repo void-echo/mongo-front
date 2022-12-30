@@ -17,7 +17,7 @@
     "vue-quill-editor": "^3.0.6",
     "vue-router": "^3.5.1",
     "vue-simplemde": "^2.1.1",
-    "xlsx": "^0.18.5"
+    "xlsx": "^0.17.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
