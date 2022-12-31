@@ -1,3 +1,5 @@
+// noinspection JSDeprecatedSymbols
+
 "use strict";
 
 import Vue from 'vue';
@@ -39,6 +41,7 @@ _axios.interceptors.response.use(
     }
 );
 
+// noinspection JSUnusedLocalSymbols
 Plugin.install = function (Vue, options) {
     Vue.axios = _axios;
     window.axios = _axios;

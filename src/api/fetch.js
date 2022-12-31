@@ -1,3 +1,5 @@
+// noinspection EqualityComparisonWithCoercionJS,UnnecessaryLocalVariableJS
+
 export default async(url = '', data = {}, type = 'GET', method = 'fetch') => {
     type = type.toUpperCase();
     url = "http://localhost:18080"+ url;

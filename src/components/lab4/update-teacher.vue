@@ -1,3 +1,4 @@
+<!--suppress HtmlDeprecatedAttribute -->
 <template>
   <div>
     <el-table

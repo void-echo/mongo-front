@@ -1,3 +1,4 @@
+<!--suppress HtmlDeprecatedAttribute -->
 <template>
   <div id="app">
     <div class="root">
