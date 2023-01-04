@@ -1,11 +1,11 @@
-// noinspection EqualityComparisonWithCoercionJS,UnnecessaryLocalVariableJS
+// noinspection EqualityComparisonWithCoercionJS,UnnecessaryLocalVariableJS,JSDeprecatedSymbols,JSCheckFunctionSignatures
 
 export default async(url = '', data = {}, type = 'GET', method = 'fetch') => {
     type = type.toUpperCase();
     url = "http://localhost:18080"+ url;
 
     if (type == 'GET') {
-        let dataStr = ''; //数据拼接字符串
+        let dataStr = '';
         Object.keys(data).forEach(key => {
             dataStr += key + '=' + data[key] + '&';
         })
